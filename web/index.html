@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="KTV 歌單">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="歌單">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <title>歌單</title>
+
+  <!--
+    預載入 Noto Sans TC（Google Fonts CDN）
+    font-display: block → 字型未就緒前保持空白，不顯示備用字型，
+    避免 CJK 字符短暫出現亂碼或方塊再替換的閃爍問題。
+    只載入最常用的 weight 400 / 700，減少下載量。
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=block');
+
+    /* 在字型載入完成前隱藏內容，避免亂碼閃爍 */
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background-color: #ffffff;
+    }
+  </style>
+
+  <script>
+    // 等待字型完全載入後才顯示 Flutter app
+    document.fonts.ready.then(function () {
+      // Flutter engine 啟動後會自己接管，這裡只是確保字型 ready
+    });
+  </script>
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    const serviceWorkerVersion = null;
+  </script>
+  <script src="flutter.js" defer></script>
+</head>
+<body>
+  <script>
+    window.addEventListener('load', function(ev) {
+      // 等待字型載入完成後再啟動 Flutter
+      document.fonts.ready.then(function() {
+        _flutter.loader.loadEntrypoint({
+          serviceWorker: {
+            serviceWorkerVersion: serviceWorkerVersion,
+          },
+          onEntrypointLoaded: function(engineInitializer) {
+            engineInitializer.initializeEngine().then(function(appRunner) {
+              appRunner.runApp();
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

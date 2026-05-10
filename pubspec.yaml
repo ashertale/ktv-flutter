@@ -1,0 +1,24 @@
+name: ktv_songlist
+description: KTV 歌單 App — Flutter 跨平台版（Web + Android + iOS）
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  shared_preferences: ^2.2.2   # 資料持久化（Web / Android / iOS 都支援）
+  file_picker: ^11.0.2         # 檔案選取（Web 用 bytes，原生用 path/bytes）
+  path_provider: ^2.1.2        # 取得暫存/文件目錄（原生使用）
+  downloadsfolder: ^1.2.0      # 寫入公開 Downloads（Android API 29+ 用 MediaStore）
+  google_fonts: ^6.2.1         # 提供 Noto Sans TC，解決 Web 中文字型閃爍
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
